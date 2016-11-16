@@ -57,10 +57,10 @@ app.put('/users/:id', function (req, res) {
         res.json(doc);
       }
     );
-  } else {
+  } else if(req.body.type === 'Project'){
     db.users.findAndModify({
       query: {_id: mongojs.ObjectId(id)},
-      update: {$set: {type: req.body.type, title: req.body.title, degree: req.body.description}},
+      update: {$set: {type: req.body.type, title: req.body.title, description: req.body.description}},
       new: true}, function (err, doc) {
         res.json(doc);
       }
