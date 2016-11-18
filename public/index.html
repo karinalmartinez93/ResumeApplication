@@ -1,139 +1,134 @@
 <!DOCTYPE>
 <html ng-app='myApp'>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Latest compiled and minified CSS -->
+<style>
+#resume-grid{
+  background-color:black;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  color:white;
+}
+</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
       crossorigin="anonymous">
-  <title>Resume Application</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+<title>Resume Application</title>
 </head>
 <body>
-  <div class="container" ng-controller="AppCtrl">
-    <h2>Resume Application</h2>
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Education</a>
-        </h1>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">
-                <!-- EDUCATION -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th>School<br></th>
-                <th>Degree<br></th>
-                <th>Last Year<br></th>
-                <th>Action<br></th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="education in users" ng-if="education.type === 'Education'">
-                <td>{{education.school}}</td>
-                <td>{{education.degree}}</td>
-                <td>{{education.last_year}}</td>
-                <td><button class="btn btn-danger" ng-click="remove(education._id)">Remove</button></td>
-                <td><button class="btn btn-warning" ng-click="editEducation(education._id)">Edit</button></td>
-              </tr>
+<div id="resume-grid" class="container" ng-controller="AppCtrl">
+  <div  class="container">
+  <h1>Resume Application</h1>
+  <h2>Welcome to the Resume Application!</h2>
+
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+    <li><a data-toggle="pill" href="#education">Education</a></li>
+    <li><a data-toggle="pill" href="#skills">Skills</a></li>
+    <li><a data-toggle="pill" href="#projects">Projects</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Click each tab to enter and edit your education, skills, and projects</p>
+    </div>
+      <div id="education" class="tab-pane fade">
+        <h3>EDUCATION</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>School<br></th>
+              <th>Degree<br></th>
+              <th>Last Year<br></th>
+              <th>Action<br></th>
+            <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="education in users" ng-if="education.type === 'Education'">
+              <td>{{education.school}}</td>
+              <td>{{education.degree}}</td>
+              <td>{{education.last_year}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(education._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editEducation(education._id)">Edit</button></td>
+            </tr>
               <input type="hidden" class="form-control" ng-model="education.type" ng-init="education.type ='Education'">
-              <tr>
-                <td><input class="form-control" ng-model="education.school"></td>
-                <td><input class="form-control" ng-model="education.degree"></td>
-                <td><input class="form-control" ng-model="education.last_year"></td>
-                <td><button class="btn btn-primary" ng-click="addEducation()">Add Education</button></td>
-                <td><button class="btn btn-info" ng-click="updateEducation()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectEducation()">Clear</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <tr>
+              <td><input class="form-control" ng-model="education.school"></td>
+              <td><input class="form-control" ng-model="education.degree"></td>
+              <td><input class="form-control" ng-model="education.last_year"></td>
+              <td><button class="btn btn-primary" ng-click="addEducation()">Add Education</button></td>
+              <td><button class="btn btn-info" ng-click="updateEducation()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectEducation()">Clear</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Skills</a>
-        </h1>
+      <div id="skills" class="tab-pane fade">
+        <h3>SKILLS</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Skill<br></th>
+              <th>Action<br></th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="skill in users" ng-if="skill.type === 'Skill'">
+              <td>{{skill.skill}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(skill._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editSkill(skill._id)">Edit</button></td>
+            </tr>
+            <input type="hidden" class="form-control" ng-model="skill.type" ng-init="skill.type ='Skill'">
+            <tr>
+              <td><input class="form-control" ng-model="skill.skill"></td>
+              <td><button class="btn btn-primary" ng-click="addSkill()">Add Skill</button></td>
+              <td><button class="btn btn-info" ng-click="updateSkill()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectSkill()">Clear</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">
-           <table class="table">
-             <thead>
-               <tr>
-                <th>Skill<br></th>
-                <th>Action<br></th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="skill in users" ng-if="skill.type === 'Skill'">
-                <td>{{skill.skill}}</td>
-                <td><button class="btn btn-danger" ng-click="remove(skill._id)">Remove</button></td>
-                <td><button class="btn btn-warning" ng-click="editSkill(skill._id)">Edit</button></td>
-              </tr>
-              <input type="hidden" class="form-control" ng-model="skill.type" ng-init="skill.type ='Skill'">
-              <tr>
-                <td><input class="form-control" ng-model="skill.skill"></td>
-                <td><button class="btn btn-primary" ng-click="addSkill()">Add Skill</button></td>
-                <td><button class="btn btn-info" ng-click="updateSkill()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectSkill()">Clear</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Projects</a>
-        </h1>
-      </div>
-      <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Title<br></th>
-                <th>Description<br></th>
-                <th>Action<br></th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="project in users" ng-if="project.type === 'Project'">
-                <td>{{project.title}}</td>
-                <td>{{project.description}}</td>
-                <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
-                <td><button class="btn btn-warning" ng-click="editProject(project._id)">Edit</button></td>
-              </tr>
+      <div id="projects" class="tab-pane fade">
+        <h3>PROJECTS</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title<br></th>
+            <th>Description<br></th>
+            <th>Action<br></th>
+            <th>&nbsp;</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="project in users" ng-if="project.type === 'Project'">
+              <td>{{project.title}}</td>
+              <td>{{project.description}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editProject(project._id)">Edit</button></td>
+            </tr>
               <input type="hidden" class="form-control" ng-model="project.type" ng-init="project.type ='Project'">
-              <tr>
-                <td><input class="form-control" ng-model="project.school"></td>
-                <td><input class="form-control" ng-model="project.degree"></td>
-                <td><button class="btn btn-primary" ng-click="addProject()">Add Project</button></td>
-                <td><button class="btn btn-info" ng-click="updateProject()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectProject()">Clear</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <tr>
+              <td><input class="form-control" ng-model="project.title"></td>
+              <td><input class="form-control" ng-model="project.description"></td>
+              <td><button class="btn btn-primary" ng-click="addProject()">Add Project</button></td>
+              <td><button class="btn btn-info" ng-click="updateProject()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectProject()">Clear</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  </div>
+</div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-  <script src="controllers/controller.js"></script>
+
 </body>
 </html>

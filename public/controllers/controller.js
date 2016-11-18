@@ -90,7 +90,7 @@ myApp.controller('AppCtrl', ['$scope', '$http',
   $scope.deselectSkill = function(){
     $scope.skill = "";
   }
-  $scope.deselectproject = function(){
+  $scope.deselectProject = function(){
     $scope.project = "";
   }
 
