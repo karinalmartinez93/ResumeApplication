@@ -68,8 +68,8 @@ app.put('/users/:id', function (req, res) {
   }
 });
 
-app.listen(22);
-console.log("Server running on port 80");
+app.listen(8080);
+console.log("Server running on port 8080");
 
 
 /*
