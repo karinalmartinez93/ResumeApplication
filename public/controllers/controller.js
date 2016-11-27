@@ -15,6 +15,7 @@ myApp.controller('AppCtrl', ['$scope', '$http',
   //ADD
   $scope.addEducation = function(){
     console.log($scope.education);
+    $scope.education.type = "Education";
     $http.post('/users', $scope.education).success(function(response){
       console.log(response);
       refresh();
@@ -22,6 +23,7 @@ myApp.controller('AppCtrl', ['$scope', '$http',
   };
   $scope.addSkill = function(){
     console.log($scope.skill);
+    $scope.skill.type = "Skill";
     $http.post('/users', $scope.skill).success(function(response){
       console.log(response);
       refresh();
@@ -29,6 +31,7 @@ myApp.controller('AppCtrl', ['$scope', '$http',
   };
   $scope.addProject = function(){
     console.log($scope.project);
+    $scope.project.type = "Project";
     $http.post('/users', $scope.project).success(function(response){
       console.log(response);
       refresh();
