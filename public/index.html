@@ -114,8 +114,9 @@
               <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
               <td><button class="btn btn-warning" ng-click="editProject(project._id)">Edit</button></td>
             </tr>
-              <input type="hidden" class="form-control" ng-model="project.type" ng-init="project.type ='Project'">
+
             <tr>
+              <input type="hidden" class="form-control" ng-model="project.type" ng-init="project.type ='Project'">
               <td><input class="form-control" ng-model="project.title"></td>
               <td><input class="form-control" ng-model="project.description"></td>
               <td><button class="btn btn-primary" ng-click="addProject()">Add Project</button></td>
