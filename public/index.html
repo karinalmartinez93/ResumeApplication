@@ -54,14 +54,6 @@
               <td><button class="btn btn-danger" ng-click="remove(education._id)">Remove</button></td>
               <td><button class="btn btn-warning" ng-click="editEducation(education._id)">Edit</button></td>
             </tr>
-            <tr>
-              <input type="hidden" class="form-control" ng-model="education.type" ng-init="education.type ='Education'">
-              <td><input class="form-control" ng-model="education.school"></td>
-              <td><input class="form-control" ng-model="education.degree"></td>
-              <td><input class="form-control" ng-model="education.last_year"></td>
-              <td><button class="btn btn-primary" ng-click="addEducation()">Add Education</button></td>
-              <td><button class="btn btn-info" ng-click="updateEducation()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectEducation()">Clear</button></td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -80,12 +72,6 @@
               <td>{{skill.skill}}</td>
               <td><button class="btn btn-danger" ng-click="remove(skill._id)">Remove</button></td>
               <td><button class="btn btn-warning" ng-click="editSkill(skill._id)">Edit</button></td>
-            </tr>
-            <tr>
-              <input type="hidden" class="form-control" ng-model="skill.type" ng-init="skill.type ='Skill'">
-              <td><input class="form-control" ng-model="skill.skill"></td>
-              <td><button class="btn btn-primary" ng-click="addSkill()">Add Skill</button></td>
-              <td><button class="btn btn-info" ng-click="updateSkill()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectSkill()">Clear</button></td>
             </tr>
           </tbody>
         </table>
@@ -107,13 +93,6 @@
               <td>{{project.description}}</td>
               <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
               <td><button class="btn btn-warning" ng-click="editProject(project._id)">Edit</button></td>
-            </tr>
-            <tr>
-              <input type="hidden" class="form-control" ng-model="project.type" ng-init="project.type ='Project'">
-              <td><input class="form-control" ng-model="project.title"></td>
-              <td><input class="form-control" ng-model="project.description"></td>
-              <td><button class="btn btn-primary" ng-click="addProject()">Add Project</button></td>
-              <td><button class="btn btn-info" ng-click="updateProject()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectProject()">Clear</button></td>
             </tr>
           </tbody>
         </table>
