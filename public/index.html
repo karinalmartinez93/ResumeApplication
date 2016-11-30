@@ -3,11 +3,9 @@
 <head>
 <style>
 #resume-grid{
-  background-color:black;
   width: 100%;
   height: 100%;
   padding: 2%;
-  color:white;
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -29,17 +27,13 @@
   <h2>Welcome to the Resume Application!</h2>
 
   <ul class="nav nav-pills">
-    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
     <li><a data-toggle="pill" href="#education">Education</a></li>
     <li><a data-toggle="pill" href="#skills">Skills</a></li>
     <li><a data-toggle="pill" href="#projects">Projects</a></li>
+    <li class="active"><a data-toggle="pill" href="#admin">Admin</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Click each tab to enter and edit your education, skills, and projects</p>
-    </div>
       <div id="education" class="tab-pane fade">
         <h3>EDUCATION</h3>
         <table class="table">
@@ -60,18 +54,51 @@
               <td><button class="btn btn-danger" ng-click="remove(education._id)">Remove</button></td>
               <td><button class="btn btn-warning" ng-click="editEducation(education._id)">Edit</button></td>
             </tr>
-            <tr>
-              <input type="hidden" class="form-control" ng-model="education.type" ng-init="education.type ='Education'">
-              <td><input class="form-control" ng-model="education.school"></td>
-              <td><input class="form-control" ng-model="education.degree"></td>
-              <td><input class="form-control" ng-model="education.last_year"></td>
-              <td><button class="btn btn-primary" ng-click="addEducation()">Add Education</button></td>
-              <td><button class="btn btn-info" ng-click="updateEducation()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectEducation()">Clear</button></td>
-            </tr>
           </tbody>
         </table>
       </div>
       <div id="skills" class="tab-pane fade">
+        <h3>SKILLS</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Skill<br></th>
+              <th>Action<br></th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="skill in users" ng-if="skill.type === 'Skill'">
+              <td>{{skill.skill}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(skill._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editSkill(skill._id)">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="projects" class="tab-pane fade">
+        <h3>PROJECTS</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title<br></th>
+            <th>Description<br></th>
+            <th>Action<br></th>
+            <th>&nbsp;</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="project in users" ng-if="project.type === 'Project'">
+              <td>{{project.title}}</td>
+              <td>{{project.description}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editProject(project._id)">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="admin" class="tab-pane fade in active">
+        <h3>Admin</h3>
         <h3>SKILLS</h3>
         <table class="table">
           <thead>
@@ -95,8 +122,29 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      <div id="projects" class="tab-pane fade">
+        <h3>SKILLS</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Skill<br></th>
+              <th>Action<br></th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="skill in users" ng-if="skill.type === 'Skill'">
+              <td>{{skill.skill}}</td>
+              <td><button class="btn btn-danger" ng-click="remove(skill._id)">Remove</button></td>
+              <td><button class="btn btn-warning" ng-click="editSkill(skill._id)">Edit</button></td>
+            </tr>
+            <tr>
+              <input type="hidden" class="form-control" ng-model="skill.type" ng-init="skill.type ='Skill'">
+              <td><input class="form-control" ng-model="skill.skill"></td>
+              <td><button class="btn btn-primary" ng-click="addSkill()">Add Skill</button></td>
+              <td><button class="btn btn-info" ng-click="updateSkill()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselectSkill()">Clear</button></td>
+            </tr>
+          </tbody>
+        </table>
         <h3>PROJECTS</h3>
         <table class="table">
           <thead>
